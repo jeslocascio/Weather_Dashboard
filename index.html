@@ -18,53 +18,46 @@
 
 
   <main class="flex-row justify-space-between">
+    <div class="col-12 col-md-8">
+      <section class="row">
+        <!-- Today's weather information -->
+        <div class="card shadow-0 border col-12">
+          <div class="card-body p-4">
+            <h4 class="mb-1 sfw-normal" id="cityName">City</h4>
+            <p class="mb-2"><strong id="the_date"></strong></p>
+            <p class="mb-2">Current temperature: <strong id="temp"></strong></p>
+            <p>Humidity: <strong id="humid"></strong></p>
+            <p>Wind Speed: <strong id="wind"></strong></p>
+            <div class="d-flex flex-row align-items-center">
+              <img id="weatherIcon"></img>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <h2 class="subtitle">The Five Day Forecast: <span id="repo-search-term"></span></h2>
+      <section class="row" id="repos-container">
+        <!-- 5-day forecast cards will go here -->
+      </section>
+    </div>
+  
     <div class="col-12 col-md-4">
-
       <div class="card">
         <h3 class="card-header text-uppercase">Search For A City</h3>
         <input type="search" id="city" class="form-control rounded" placeholder="City" aria-label="Search"
-        aria-describedby="search-addon" />
+          aria-describedby="search-addon" />
         <div class="card-body">
-        <button class="btn " id="check">Search</button>
+          <button class="btn " id="check">Search</button>
         </div>
       </div>
-
+  
       <div class="card">
         <h3 class="card-header text-uppercase">Previous Searches</h3>
         <div id="language-buttons" class="card-body">
-          <button  class="btn" id="last_Search"></button>
+          <button class="btn " id="last_Search">Search Something</button>
         </div>
       </div>
     </div>
-
-
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle">The Five Day Forecast: <span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group"></div>
-    </div>
-
-    <section class="row">
-      <div class="card shadow-0 border">
-        <div class="card-body p-4">
-  
-          <h4 class="mb-1 sfw-normal" id="cityName">City</h4>
-          <p class="mb-2"><strong id="the_date"></strong></p>
-          <p class="mb-2">Current temperature: <strong id="temp"></strong></p>
-          <p>Humidity: <strong id="humid"></strong></p>
-          <p>Wind Speed: <strong id="wind"></strong></p>
-  
-          <div class="d-flex flex-row align-items-center">
-          <img id="weatherIcon"></img>
-          </div>
-  
-        </div>
-      </div>
-    </section>
-    <br>
-    <section class="row" id="repos-container">
-    </section>
-    
-    
   </main>
 
     

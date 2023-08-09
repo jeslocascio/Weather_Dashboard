@@ -1,3 +1,4 @@
+/* Define color variables */
 :root {
     --primary: #E8E4E0;
     --secondary: #64EED0;
@@ -7,10 +8,12 @@
     --border-radius: 0.3rem;
   }
   
+  /* Global box-sizing */
   * {
     box-sizing: border-box;
   }
   
+  /* Body styles */
   body {
     background-color: var(--primary);
     margin: 0;
@@ -21,6 +24,7 @@
     font-size: 16px;
   }
   
+  /* Heading styles */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     margin: 0;
@@ -28,15 +32,18 @@
     line-height: 1.25;
   }
   
+  /* Main content container */
   main {
     margin: 20px auto;
     width: 94%;
   }
   
+  /* Paragraph styles */
   p {
     font-size: 1.2rem;
   }
   
+  /* Button styles */
   .btn {
     font-size: 1.3rem;
     text-decoration: none;
@@ -60,6 +67,7 @@
     box-shadow: 2px 2px var(--dark);
   }
   
+  /* Additional button styles */
   .btn-inline {
     display: inline;
   }
@@ -87,6 +95,7 @@
     box-shadow: 2px 2px var(--dark);
   }
   
+  /* Hero section styles */
   .hero {
     padding: 3% 4%;
     background-color: var(--dark);
@@ -97,6 +106,7 @@
     max-width: 75%;
   }
   
+  /* App title styles */
   .app-title {
     font-size: 3rem;
     background-color: var(--primary);
@@ -107,6 +117,7 @@
     box-shadow: 6px 5px var(--light-dark);
   }
   
+  /* List group styles */
   .list-group {
     padding: 0;
     list-style: none;
@@ -125,50 +136,16 @@
     background-color: var(--dark);
   }
   
-  .status-icon {
-    padding: 2px 5px;
-    margin: 0 5px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: var(--border-radius);
-  }
-  
-  .icon-danger {
-    color: rgb(255, 70, 70);
-  }
-  
-  .icon-success {
-    color: rgb(29, 153, 255);
-  }
-  
-  /* CARDS */
-  .card {
-    margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-  }
-  
-  .card-header {
-    color: var(--primary);
-    background-color: var(--dark);
-    padding: 2.5%;
-    border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-  }
-  
-  .card-body {
-    padding: 2.5%;
-  }
-
+  /* Row layout styles */
   .row {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 15px;
-}
+  }
   
-  /* FORM */
-  .form-label,
-  .form-input,
-  .form-textarea {
+  /* Form label, input, and textarea styles */
+  .form-label, .form-input, .form-textarea {
     display: block;
   }
   
@@ -186,7 +163,41 @@
     border-radius: var(--border-radius);
   }
   
-  /* HEIGHT / WIDTH UTILS */
+  /* Status icon styles */
+  .status-icon {
+    padding: 2px 5px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: var(--border-radius);
+  }
+  
+  .icon-danger {
+    color: rgb(255, 70, 70);
+  }
+  
+  .icon-success {
+    color: rgb(29, 153, 255);
+  }
+  
+  /* Card styles */
+  .card {
+    margin: 0 0 20px 0;
+    border: 3px solid var(--dark);
+    border-radius: var(--border-radius);
+  }
+  
+  .card-header {
+    color: var(--primary);
+    background-color: var(--dark);
+    padding: 2.5%;
+    border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  }
+  
+  .card-body {
+    padding: 2.5%;
+  }
+  
+  /* Height and width utility styles */
   .min-100-vh {
     min-height: 100vh;
   }
@@ -195,68 +206,41 @@
     min-width: 100vw;
   }
   
-  /* FONT UTILS */
+  /* Uppercase text style */
   .text-uppercase {
     text-transform: uppercase;
   }
   
-  /* FLEX CONTENT */
-  .flex-row {
+  /* Flex content styles */
+  .flex-row, .flex-column {
     display: flex;
     flex-wrap: wrap;
   }
   
-  .flex-column {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  /* Justify content styles */
+  .justify-space-between, .justify-space-around, .justify-flex-start, .justify-flex-end, .justify-center {
+    justify-content: var(--justify-content);
   }
   
-  .justify-space-between {
-    justify-content: space-between;
+  /* Align items styles */
+  .align-stretch, .align-end, .align-center {
+    align-items: var(--align-items);
   }
   
-  .justify-space-around {
-    justify-content: space-around;
-  }
-  
-  .justify-flex-start {
-    justify-content: flex-start;
-  }
-  
-  .justify-flex-end {
-    justify-content: flex-end;
-  }
-  
-  .justify-center {
-    justify-content: center;
-  }
-  
-  .align-stretch {
-    align-items: stretch;
-  }
-  
-  .align-end {
-    align-items: flex-end;
-  }
-  
-  .align-center {
-    align-items: center;
-  }
-  
+  /* Column styles */
   .col-auto {
     flex-grow: 1;
   }
   
-  .col-1, .col-2, .col-3, .col-4, .col-5,
-  .col-6, .col-7, .col-8, .col-9, .col-10,
-  .col-11, .col-12 {
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
   }
   
-  /* col-sm */
+  /* Media queries for different screen sizes */
+   
+  /* Media Queries relating to small columns */
   @media screen and (min-width: 640px) {
     .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5,
     .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10,
@@ -267,7 +251,7 @@
     }
   }
   
-  /* col-md */
+ /* Media Queries relating to Medium columns */
   @media screen and (min-width: 768px) {
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5,
     .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10,
@@ -278,7 +262,7 @@
     }
   }
   
-  /* col-lg */
+ /* Media Queries relating to large columns */
   @media screen and (min-width: 992px) {
     .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5,
     .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10,
@@ -289,7 +273,7 @@
     }
   }
   
-  /* col-xl */
+  /* Media Queries relating to extra-large columns */
   @media screen and (min-width: 1200px) {
     .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5,
     .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10,

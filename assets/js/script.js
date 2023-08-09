@@ -10,9 +10,10 @@ const mostRecent = document.getElementById("last_Search");
 const theDay = document.getElementById("the_date");
 const container = document.getElementById("repos-container");
 
-// Loop through the forecast elements (indices from 1 to 5)
+
+// Loop through the forecast elements and labels them 1 through 5
 for (let i = 1; i <= 5; i++) {
-  // Create the structure for the forecast card
+  // Creates the structure for each forecast card
   const card = document.createElement("div");
   card.className = "card shadow-0 border";
   
@@ -62,7 +63,7 @@ for (let i = 1; i <= 5; i++) {
 // Create an array to hold forecast elements
 const futureElements = [];
 
-// Loop through forecast elements (assuming indices from 1 to 5)
+// Loops through the forecast elements and assigns them JS variables
 for (let i = 1; i <= 5; i++) {
   // Get references to forecast elements using their IDs
   const cityName = document.getElementById("future_cityName_" + i);
@@ -72,7 +73,7 @@ for (let i = 1; i <= 5; i++) {
   const wind = document.getElementById("future_wind_" + i);
   const weatherIcon = document.getElementById("future_weatherIcon_" + i);
   
-  // Create an object to store references to the elements
+  // Creates an object to store references to the elements
   const forecastElement = {
     cityName: cityName,
     date: date,
@@ -82,11 +83,11 @@ for (let i = 1; i <= 5; i++) {
     weatherIcon: weatherIcon
   };
   
-  // Push the object into the futureElements array
+  // Pushes the object into the futureElements array
   futureElements.push(forecastElement);
 }
 
-// Function to fetch weather data for a city
+// Function to fetch the current day's weather data for a city based on search
 const getWeather = (city) => {
   const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
 
@@ -99,7 +100,7 @@ const getWeather = (city) => {
       return response.json();
     })
     .then(function (data) {
-      // Extract weather data
+      // Extracts weather data
       let date = new Date(data.dt * 1000).toDateString();
       const humidity = data.main.humidity;
       const windSpeed = data.wind.speed;
@@ -108,7 +109,7 @@ const getWeather = (city) => {
       const iconCode = data.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
       
-      // Update weather data on the page
+      // Showcases the weather data on the page
       document.getElementById('weatherIcon').src = iconUrl;
       placeName.textContent = name;
       theDay.textContent = date;
@@ -117,15 +118,25 @@ const getWeather = (city) => {
       howWindy.textContent = windSpeed + " mph";
       mostRecent.textContent = name;
       
-      // Fetch and display five-day forecast
+
+      // Stores the searched city and saves to the Previous Searches bar
+      if (!previousSearches.includes(name)) {
+        previousSearches.push(name);
+        renderPreviousSearches();
+      }
+
+      // Fetches and displays five-day forecast
       const lat = data.coord.lat;
       const lon = data.coord.lon;
       getFiveDay(lat, lon, name); // Pass the city name to getFiveDay
+
+      
     });
 };
 
-// Function to fetch five-day forecast data
+// Function to fetch the weather forecast of a city over the next five days
 function getFiveDay(lat, lon, city) {
+
   const fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`;
 
   fetch(fiveDayURL)
@@ -133,7 +144,7 @@ function getFiveDay(lat, lon, city) {
       return response.json();
     })
     .then(function (data) {
-      // Process and display five-day forecast data
+      // Processes and displays five-day forecast data
       for (let i = 1; i <= 5; i++) {
         const forecast = data.list[i * 8 - 1]; // Get forecast data for each day
         const forecastDate = new Date(forecast.dt * 1000).toDateString();
@@ -151,7 +162,7 @@ function getFiveDay(lat, lon, city) {
     });
 }
 
-// Search button event listener
+// Searches for a city's weather after clicking the search button
 const search = document.getElementById("check");
 search.addEventListener("click", () => {
   const citySearched = cityInput.value;
@@ -164,3 +175,25 @@ search.addEventListener("click", () => {
 
 // Input field for city search
 const cityInput = document.getElementById("city");
+
+// Array to store previous search cities
+const previousSearches = [];
+
+// Function to add previous searches to buttons, and list them
+const renderPreviousSearches = () => {
+  const languageButtons = document.getElementById("language-buttons");
+  languageButtons.innerHTML = ""; // Clear existing buttons
+  
+  previousSearches.forEach((searchCity) => {
+    const button = document.createElement("button");
+    button.textContent = searchCity;
+    button.className = "btn";
+    
+    // Adds click event listener to each button
+    button.addEventListener("click", () => {
+      getWeather(searchCity);
+    });
+    
+    languageButtons.appendChild(button);
+  });
+};
