@@ -89,7 +89,7 @@ for (let i = 1; i <= 5; i++) {
 
 // Function to fetch the current day's weather data for a city based on search
 const getWeather = (city) => {
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
 
   fetch(queryURL)
     .then(function (response) {
