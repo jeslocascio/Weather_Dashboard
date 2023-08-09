@@ -107,7 +107,7 @@ const getWeather = (city) => {
       const temp = data.main.temp;
       const name = data.name;
       const iconCode = data.weather[0].icon;
-      const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+      const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
       
       // Showcases the weather data on the page
       document.getElementById('weatherIcon').src = iconUrl;
@@ -156,7 +156,7 @@ function getFiveDay(lat, lon, city) {
         futureElements[i - 1].wind.textContent = forecast.wind.speed + " mph";
         
         const iconCode = forecast.weather[0].icon;
-        const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+        const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
         futureElements[i - 1].weatherIcon.src = iconUrl;
       }
     });
